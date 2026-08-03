@@ -1,0 +1,14 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+!terraform.tfvars.example
+crash.log
+crash.*.log
+*.tfplan
+ 
+# Ansible
+*.retry
+inventories/*/hosts.ini
+!inventories/*/hosts.ini.example

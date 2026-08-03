@@ -1,0 +1,40 @@
+proxmox_endpoint  = "https://192.168.150.200:8006/api2/json"
+proxmox_api_token = "terraform-user@pve!k8s-lab=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+target_node   = "pveoap"
+template_vmid = 9001
+storage       = "local-lvm"
+
+network_bridge = "vmbr0"
+gateway        = "192.168.150.1"
+dns_server     = "8.8.8.8"
+
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
+ci_username          = "username"
+
+nodes = {
+  "k8s-cp-1" = {
+    vmid   = 9101
+    role   = "control-plane"
+    cores  = 2
+    memory = 2048
+    disk   = 30
+    ip     = "192.168.150.131"
+  }
+  "k8s-worker-1" = {
+    vmid   = 9102
+    role   = "worker"
+    cores  = 2
+    memory = 2048
+    disk   = 60
+    ip     = "192.168.150.132"
+  }
+  "k8s-worker-2" = {
+    vmid   = 9103
+    role   = "worker"
+    cores  = 2
+    memory = 2048
+    disk   = 60
+    ip     = "192.168.150.133"
+  }
+}
