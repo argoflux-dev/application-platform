@@ -84,3 +84,19 @@ variable "timeout_clone" {
   type        = number
   default     = 600
 }
+
+variable "ansible_username" {
+  description = "Имя служебного пользователя для Ansible, создаваемого через cloud-init"
+  type        = string
+}
+
+variable "ansible_ssh_public_key" {
+  description = "Содержимое публичного SSH-ключа пользователя ansible"
+  type        = string
+}
+
+variable "snippet_datastore_id" {
+  description = "Storage Proxmox с включённым типом контента Snippets"
+  type        = string
+  default     = "local"
+}

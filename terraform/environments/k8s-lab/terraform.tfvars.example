@@ -6,11 +6,19 @@ template_vmid = 9001
 storage       = "local-lvm"
 
 network_bridge = "vmbr0"
-gateway        = "192.168.150.1"
-dns_server     = "8.8.8.8"
+gateway        = "192.168.150.200"
+dns_server     = "9.9.9.9"
 
-ssh_public_key_path = "~/.ssh/id_rsa.pub"
-ci_username          = "username"
+# Before the first apply, create a key with the command:
+#   ssh-keygen -t ed25519 -f ~/.ssh/Mint22VM2k8s-lab_ed -C "vm-admin" -N ""
+ci_username         = "username"
+ssh_public_key_path = "~/.ssh/Mint22VM2k8s-lab_ed.pub"
+
+
+# Before the first apply, create a key with the command:
+#   ssh-keygen -t ed25519 -f ~/.ssh/Mint22VM2k8s-lab-ansible_ed -C "ansible-automation" -N ""
+ansible_username             = "ansible"
+ansible_ssh_public_key_path  = "~/.ssh/Mint22VM2k8s-lab-ansible_ed.pub"
 
 nodes = {
   "k8s-cp-1" = {

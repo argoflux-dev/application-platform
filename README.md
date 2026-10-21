@@ -1,2 +1,3 @@
 # application-platform
-Self-hosted application platform built on Proxmox VE using Terraform, Ansible, Kubernetes, Docker, Vault and PostgreSQL for modern distributed applications.
+Implemented: reusable Terraform module for Proxmox VMs (bpg/proxmox, cloud-init) and a k8s-lab environment that provisions cluster nodes.
+Planned: Kubernetes bootstrap, Ansible, Vault, PostgreSQL.

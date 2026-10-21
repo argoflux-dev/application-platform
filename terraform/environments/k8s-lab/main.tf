@@ -1,6 +1,11 @@
 module "node" {
   source = "../../modules/proxmox-vm"
 
+  providers = {
+    proxmox               = proxmox
+    proxmox.root_session  = proxmox.root_session
+  }
+
   for_each = var.nodes
 
   name           = each.key
@@ -21,4 +26,7 @@ module "node" {
   ci_username    = var.ci_username
   ssh_public_key = trimspace(file(pathexpand(var.ssh_public_key_path)))
   pool_id        = var.pool_id
+
+  ansible_username       = var.ansible_username
+  ansible_ssh_public_key = trimspace(file(pathexpand(var.ansible_ssh_public_key_path)))
 }

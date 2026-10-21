@@ -86,3 +86,23 @@ variable "nodes" {
     ip     = string
   }))
 }
+
+variable "ansible_username" {
+  description = "Имя служебного пользователя для автоматизации Ansible (отдельный от административного пользователя-человека)"
+  type        = string
+  default     = "ansible"
+}
+
+variable "ansible_ssh_public_key_path" {
+  description = "Путь к публичному SSH-ключу пользователя ansible. Ключ генерируется один раз вручную командой: ssh-keygen -t ed25519 -f ~/.ssh/ansible_k8s_lab -C \"ansible-automation\" -N \"\" — и переиспользуется для всех ВМ кластера"
+  type        = string
+  default     = "~/.ssh/ansible_k8s_lab.pub"
+}
+
+# --- аутентификация root@pam для загрузки cloud-init snippets ---
+
+variable "proxmox_root_password" {
+  description = "Пароль пользователя root@pam. Используется ИСКЛЮЧИТЕЛЬНО для второго provider-алиаса (proxmox.root_session, см. providers.tf), который загружает cloud-init snippets. Причина: Proxmox VE 9.x отклоняет чтение полной конфигурации storage (GET /storage/{storage}) для любых API-токенов вне зависимости от прав — подтверждено экспериментально curl-запросом. Для операций с ВМ (создание, диски) этот пароль не используется, там применяется ограниченный по правам API-токен."
+  type        = string
+  sensitive   = true
+}
